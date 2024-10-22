@@ -7,12 +7,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] SpriteRenderer characterSR;
+    [SerializeField] Joystick moveInput;
 
-    Vector3 moveInput;
+    //Vector3 moveInput;
     Animator animator;
     Rigidbody2D rb;
 
-    
+
     public float rollBoots;
     public float rollTime;
     private float currentRollTime;
@@ -25,15 +26,20 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        moveInput.x = Input.GetAxis("Horizontal");
-        moveInput.y = Input.GetAxis("Vertical");
-        transform.Translate(moveInput * moveSpeed * Time.deltaTime);
-
-        animator.SetFloat("Speed", moveInput.sqrMagnitude);
-
-        if (moveInput.x != 0)
+        if (moveInput.Direction.y != 0)
         {
-            if (moveInput.x > 0)
+            transform.Translate(moveInput.Direction * moveSpeed * Time.deltaTime);
+        }
+
+        //moveInput.x = Input.GetAxis("Horizontal");
+        //moveInput.y = Input.GetAxis("Vertical");
+        //transform.Translate(moveInput * moveSpeed * Time.deltaTime);
+
+        animator.SetFloat("Speed", moveInput.Direction.sqrMagnitude);
+
+        if (moveInput.Direction.x != 0)
+        {
+            if (moveInput.Direction.x > 0)
             {
                 characterSR.transform.localScale = new Vector3(1, 1, 0);
             }

@@ -7,12 +7,12 @@ public class GameOver : MonoBehaviour
 {
     public void RestartGame()
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(1);
         Time.timeScale = 1;
     }
 
     public void BackMainMenu(){
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(0);
         Time.timeScale = 1;
     }
 }

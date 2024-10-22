@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     public GameObject pfDeadEff;
     public Transform _player;
     public SpriteRenderer enemySR;
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("bullet"))
